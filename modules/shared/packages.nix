@@ -9,7 +9,7 @@ with pkgs; [
   btop
   coreutils
   killall
-  openssh
+  # openssh  # Use system SSH on macOS for UseKeychain support
   sqlite
   wget
   zip

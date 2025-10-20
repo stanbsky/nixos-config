@@ -247,37 +247,39 @@ let name = "Stan Borzhemsky";
     };
   };
 
-  ssh = {
+  ssh = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     enable = true;
-    enableDefaultConfig = true;
+    enableDefaultConfig = false;
     includes = [
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-        "/home/${user}/.ssh/config_external"
-      )
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-        "/Users/${user}/.ssh/config_external"
-      )
+      "/home/${user}/.ssh/config_external"
     ];
     matchBlocks = {
       "*" = {
-        # Set the default values we want to keep
         sendEnv = [ "LANG" "LC_*" ];
         hashKnownHosts = true;
       };
-      # Example SSH configuration for GitHub
-      # "github.com" = {
-      #   identitiesOnly = true;
-      #   identityFile = [
-      #     (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-      #       "/home/${user}/.ssh/id_github"
-      #     )
-      #     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-      #       "/Users/${user}/.ssh/id_github"
-      #     )
-      #   ];
-      # };
     };
   };
+  #   matchBlocks = {
+  #     "*" = {
+  #       # Set the default values we want to keep
+  #       sendEnv = [ "LANG" "LC_*" ];
+  #       hashKnownHosts = true;
+  #     };
+  #     # Example SSH configuration for GitHub
+  #     # "github.com" = {
+  #     #   identitiesOnly = true;
+  #     #   identityFile = [
+  #     #     (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+  #     #       "/home/${user}/.ssh/id_github"
+  #     #     )
+  #     #     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
+  #     #       "/Users/${user}/.ssh/id_github"
+  #     #     )
+  #     #   ];
+  #     # };
+  #   };
+  # };
 
   tmux = {
     enable = true;
