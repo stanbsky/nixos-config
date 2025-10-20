@@ -1,0 +1,89 @@
+alias ll="ls -lh"
+alias lt="ls -lht | head"
+mkcd() {mkdir $1 && cd $1}
+
+alias vi=nvim
+alias tf=terraform
+alias k=kubectl
+km() {
+        newkube="${HOME}/Downloads/${1}.yaml"
+        kubedir="${HOME}/.kube"
+        KUBECONFIG="${kubedir}/config:${newkube}" kubectl config view --flatten > merged-config.yaml &&
+        cp "${kubedir}/config" "${kubedir}/config.bak" && mv merged-config.yaml "${kubedir}/config"
+}
+alias vsas="source ~/.aliases"
+alias vias="vi ~/.aliases"
+
+# git
+alias ga="git add"
+alias gb="git branch"
+alias gs="git status"
+alias gc="git commit"
+alias gd="git diff"
+alias gl="git log"
+alias gpoh="git push origin HEAD"
+gpr() {
+        head=$(git rev-parse --abbrev-ref HEAD)
+        repo=$(basename $(pwd))
+        open "https://github.com/getditto/${repo}/compare/${head}"
+}
+alias gco="git checkout"
+slb() {
+    ~/code/dse-ditto/get-docs.sh slb.stanbsky.com $(kubectl get bpapp "slb-app-${1}" -n ditto -o yaml | yq '.spec.appId') $(rg "slb-app-${1}" slb-keys | cut -f2 -d' ')
+}
+alias cconf='vi /Users/stanbsky/Library/Application\ Support/Claude/claude_desktop_config.json'
+alias hls='helm ls -n ditto'
+alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+alias kver='kubectl get pods -n ditto -o custom-columns="POD NAME:.metadata.name,CONTAINER IMAGE:.spec.containers[*].image"'
+kdebug() {
+    # https://github.com/nicolaka/netshoot
+    kubectl debug -it --image nicolaka/netshoot $(k get pods -n ditto | rg "$1" | awk '{print $1}') -n ditto --profile=netadmin
+}
+fullcert() {
+    openssl s_client -connect "${1}:443" -servername $1 < /dev/null | openssl x509 -text -noout
+}
+shortcert() {
+    openssl s_client -connect "${1}:443" -servername $1 < /dev/null 2>/dev/null | openssl x509 -noout -subject -issuer -dates -fingerprint
+}
+# secretcert <secret-name> <namespace>
+secretcert() {
+  local name="$1" ns="$2"
+  if [[ -z "$name" || -z "$ns" ]]; then
+    echo "usage: secretcert <secret-name> <namespace>" >&2
+    return 2
+  fi
+
+  # portable base64 decode (GNU and macOS/BSD)
+  _b64dec() {
+    if base64 --help 2>/dev/null | grep -q -- '--decode'; then
+      base64 --decode
+    else
+      base64 -D
+    fi
+  }
+
+  # Grab PEM (may include a chain)
+  local pem
+  if ! pem="$(kubectl -n "$ns" get secret "$name" -o jsonpath='{.data.tls\.crt}' 2>/dev/null | _b64dec)"; then
+    echo "error: failed to read secret '$name' in namespace '$ns' or decode tls.crt" >&2
+    return 1
+  fi
+  if [[ -z "$pem" ]]; then
+    echo "error: tls.crt is empty or not present in secret '$name' ($ns)" >&2
+    return 1
+  fi
+
+  # Split out each cert and mirror shortcert fields
+  awk '
+    /-----BEGIN CERTIFICATE-----/ {inblk=1; buf=$0 ORS; next}
+    inblk {buf=buf $0 ORS}
+    /-----END CERTIFICATE-----/ && inblk {
+      # ensure END line was included by prior rule, then NUL-delimit
+      printf "%s\0", buf
+      inblk=0; buf=""
+    }
+  ' <<<"$pem" | while IFS= read -r -d '' cert; do
+    printf '---\n'
+    printf '%s' "$cert" | openssl x509 -noout -subject -issuer -dates -fingerprint
+  done
+}

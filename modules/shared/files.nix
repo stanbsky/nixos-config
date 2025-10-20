@@ -6,6 +6,11 @@
     text = builtins.readFile ../shared/config/emacs/init.el;
   };
 
+  # Shell aliases
+  ".aliases" = {
+    text = builtins.readFile ./config/aliases;
+  };
+
   # IMPORTANT: The Emacs configuration expects a config.org file at ~/.config/emacs/config.org
   # You can either:
   # 1. Copy the provided config.org to ~/.config/emacs/config.org

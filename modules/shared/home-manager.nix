@@ -28,8 +28,10 @@ let name = "Stan Borzhemsky";
       fi
 
       # Define variables for directories
+      export XDG_CONFIG_HOME=~/.config
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
+      export PATH="''${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
       export PATH=$HOME/.local/share/bin:$PATH
 
       # Remove history data we don't want to see
@@ -37,23 +39,32 @@ let name = "Stan Borzhemsky";
 
       # Emacs is my editor
       export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
+      export EDITOR="nvim"
+      # export EDITOR="emacsclient -t"
+      # export VISUAL="emacsclient -c -a emacs"
 
-      e() {
-          emacsclient -t "$@"
-      }
+      # e() {
+      #     emacsclient -t "$@"
+      # }
 
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
       }
 
+      source ~/.aliases
+
       # Use difftastic, syntax-aware diffing
       alias diff=difft
 
       # Always color ls and group directories
       alias ls='ls --color=auto'
+
+      autoload -Uz compinit
+      compinit
+      source ~/.jj-completions
+
+      eval "$(direnv hook zsh)"
     '';
   };
 

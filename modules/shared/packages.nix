@@ -14,6 +14,7 @@ with pkgs; [
   wget
   zip
   teams
+  difftastic
 
   # Encryption and security tools
   age
