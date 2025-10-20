@@ -71,6 +71,12 @@ let user = "stanborzhemsky"; in
         tilesize = 32;
         magnification = true;
         largesize = 64;
+
+        # Disable all hot corners
+        wvous-tl-corner = 1; # Top left
+        wvous-tr-corner = 1; # Top right
+        wvous-bl-corner = 1; # Bottom left
+        wvous-br-corner = 1; # Bottom right
       };
 
       finder = {
