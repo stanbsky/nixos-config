@@ -249,7 +249,7 @@ let name = "Stan Borzhemsky";
 
   ssh = {
     enable = true;
-    enableDefaultConfig = false;
+    enableDefaultConfig = true;
     includes = [
       (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
         "/home/${user}/.ssh/config_external"
