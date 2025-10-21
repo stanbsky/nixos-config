@@ -58,6 +58,9 @@ in
           { "emacs-launcher.command".source = myEmacsLauncher; }
         ];
         stateVersion = "23.11";
+        sessionVariables = {
+          RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
+        };
       };
       programs = {} // import ../shared/home-manager.nix { inherit config pkgs lib; };
 

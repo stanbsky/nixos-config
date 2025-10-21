@@ -95,6 +95,9 @@ with pkgs; [
   go
   rustc
   cargo
+  rust-analyzer
+  rustfmt
+  clippy
   openjdk
   yaml-language-server
 
