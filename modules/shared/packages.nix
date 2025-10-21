@@ -41,7 +41,12 @@ with pkgs; [
   meslo-lgs-nf
 
   # Text and terminal utilities
-  neovim
+  (neovim.override {
+    withPython3 = true;
+    withNodeJs = true;
+    withRuby = true;
+    extraPython3Packages = ps: with ps; [ pynvim ];
+  })
   zed-editor
   htop
   jetbrains-mono
