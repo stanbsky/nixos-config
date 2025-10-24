@@ -72,6 +72,9 @@ let user = "stanborzhemsky"; in
         magnification = true;
         largesize = 64;
 
+        # Disable "Automatically rearrange Spaces based on most recent use" in System Preferences > Mission Control
+        mru-spaces = false;
+
         # Disable all hot corners
         wvous-tl-corner = 1; # Top left
         wvous-tr-corner = 1; # Top right
