@@ -87,3 +87,6 @@ secretcert() {
     printf '%s' "$cert" | openssl x509 -noout -subject -issuer -dates -fingerprint
   done
 }
+kxp() {
+  export "KUBECONFIG=${HOME}/Downloads/${1}.yaml"
+}
