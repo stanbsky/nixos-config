@@ -9,6 +9,7 @@ let name = "Stan Borzhemsky";
     # Configuration written to ~/.config/starship.toml
     settings = {
       kubernetes.disabled = false;
+      dotnet.disabled = true;
       # add_newline = false;
 
       # character = {
@@ -17,6 +18,14 @@ let name = "Stan Borzhemsky";
       # };
 
       # package.disabled = true;
+    };
+  };
+  zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "solarized-light";
+      scroll_buffer_size = 100000;
     };
   };
   # Shared shell configuration
