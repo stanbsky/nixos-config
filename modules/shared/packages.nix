@@ -68,6 +68,7 @@ with pkgs; [
   unixtools.watch
   zellij
   yazi
+  starship
 
   # Kubernetes k8s
   kubectl
