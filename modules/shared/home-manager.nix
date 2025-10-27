@@ -28,7 +28,8 @@ let name = "Stan Borzhemsky";
       fi
 
       # Define variables for directories
-      export XDG_CONFIG_HOME=~/.config
+      export XDG_CONFIG_HOME=$HOME/.config
+      export XDG_DATA_HOME=$HOME/.local/share
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
       export PATH="''${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
