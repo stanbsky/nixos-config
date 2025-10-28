@@ -25,4 +25,5 @@ _:
   # "tmux"
   # "neovim"
   "pinentry-mac"
+  "telepresenceio/telepresence/telepresence-oss"
 ]
