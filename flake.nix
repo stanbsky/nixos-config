@@ -23,13 +23,17 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-telepresence = {
+      url = "github:telepresenceio/homebrew-telepresence";
+      flake = false;
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs, disko } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-telepresence, home-manager, nixpkgs, disko } @inputs:
     let
       user = "stanborzhemsky";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -93,6 +97,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
+                  "telepresenceio/homebrew-telepresence" = homebrew-telepresence;
                 };
                 mutableTaps = false;
                 autoMigrate = true;
