@@ -124,6 +124,22 @@
         "type": "github"
       }
     },
+    "homebrew-telepresence": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760640573,
+        "narHash": "sha256-eM0qnAP8PSbSRvJU4tWxJCp37jfBlOkIVV3VV3SDsEw=",
+        "owner": "telepresenceio",
+        "repo": "homebrew-telepresence",
+        "rev": "ec506acc41ef2f29815f98a7251d3f52fa7d727b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "telepresenceio",
+        "repo": "homebrew-telepresence",
+        "type": "github"
+      }
+    },
     "nix-homebrew": {
       "inputs": {
         "brew-src": "brew-src"
@@ -182,6 +198,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-telepresence": "homebrew-telepresence",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2"
       }

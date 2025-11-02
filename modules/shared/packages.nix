@@ -101,6 +101,7 @@ with pkgs; [
   clippy
   openjdk
   yaml-language-server
+  nodejs_22
 
   # Python packages
   python3
