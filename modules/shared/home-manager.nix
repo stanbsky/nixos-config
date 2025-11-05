@@ -22,7 +22,7 @@ let name = "Stan Borzhemsky";
   };
   zellij = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false;  # Manual integration after environment setup
     settings = {
       theme = "solarized-light";
       scroll_buffer_size = 100000;
@@ -100,7 +100,10 @@ let name = "Stan Borzhemsky";
       source ~/.jj-completions
 
       eval "$(direnv hook zsh)"
-      eval "$(starship init zsh)"
+
+      # Start zellij after all environment setup is complete
+      # This ensures proper user environment for session restoration
+      eval "$(${pkgs.zellij}/bin/zellij setup --generate-auto-start zsh)"
     '';
   };
 
