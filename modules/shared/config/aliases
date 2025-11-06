@@ -31,7 +31,7 @@ alias gco="git checkout"
 slb() {
     ~/code/dse-ditto/get-docs.sh slb.stanbsky.com $(kubectl get bpapp "slb-app-${1}" -n ditto -o yaml | yq '.spec.appId') $(rg "slb-app-${1}" slb-keys | cut -f2 -d' ')
 }
-alias cconf='vi /Users/stanbsky/Library/Application\ Support/Claude/claude_desktop_config.json'
+alias cconf="vi ${HOME}/Library/Application\ Support/Claude/claude_desktop_config.json"
 alias hls='helm ls -n ditto'
 alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias kver='kubectl get pods -n ditto -o custom-columns="POD NAME:.metadata.name,CONTAINER IMAGE:.spec.containers[*].image"'
