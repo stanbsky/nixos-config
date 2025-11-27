@@ -51,7 +51,7 @@ with pkgs; [
   htop
   jetbrains-mono
   jq
-  yq
+  yq-go
   ripgrep
   tree
   tmux
