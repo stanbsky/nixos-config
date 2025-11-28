@@ -39,6 +39,7 @@ kdebug() {
     # https://github.com/nicolaka/netshoot
     kubectl debug -it --image nicolaka/netshoot $(k get pods -n ditto | rg "$1" | awk '{print $1}') -n ditto --profile=netadmin
 }
+alias nettools='echo "apt install -y iputils-ping curl netcat-traditional dnsutils" | pbcopy'
 fullcert() {
     openssl s_client -connect "${1}:443" -servername $1 < /dev/null | openssl x509 -text -noout
 }
