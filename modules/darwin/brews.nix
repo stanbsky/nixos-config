@@ -26,4 +26,5 @@ _:
   # "neovim"
   "pinentry-mac"
   "telepresenceio/telepresence/telepresence-oss"
+  "aws-sso-cli"
 ]
