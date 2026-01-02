@@ -89,7 +89,7 @@ with pkgs; [
   fzf
   direnv
   cloc
-  mongosh
+  # mongosh
   mongodb-tools
 
   # Programming languages and runtimes
