@@ -96,6 +96,7 @@ with pkgs; [
   go
   rustc
   cargo
+  cargo-cross
   rust-analyzer
   rustfmt
   clippy
