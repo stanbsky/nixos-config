@@ -94,12 +94,8 @@ with pkgs; [
 
   # Programming languages and runtimes
   go
-  rustc
-  cargo
+  rustup  # Manages rust toolchains (includes rustc, cargo, rust-analyzer, rustfmt, clippy)
   cargo-cross
-  rust-analyzer
-  rustfmt
-  clippy
   openjdk
   yaml-language-server
   nodejs_22
