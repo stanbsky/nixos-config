@@ -2,6 +2,7 @@ _:
 
 [
   # Development Tools
+  "zed"
   "homebrew/cask/docker"
   "iterm2"
   "android-studio"

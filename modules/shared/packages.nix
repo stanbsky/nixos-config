@@ -47,7 +47,6 @@ with pkgs; [
     withRuby = true;
     extraPython3Packages = ps: with ps; [ pynvim ];
   })
-  zed-editor
   htop
   jetbrains-mono
   jq
