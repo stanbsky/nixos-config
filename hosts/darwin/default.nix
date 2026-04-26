@@ -37,6 +37,7 @@ let user = "stanborzhemsky"; in
 
     extraOptions = ''
       experimental-features = nix-command flakes
+      !include /etc/nix/github-token.conf
     '';
   };
 
