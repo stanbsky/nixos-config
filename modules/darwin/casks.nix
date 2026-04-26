@@ -3,7 +3,7 @@ _:
 [
   # Development Tools
   "zed"
-  "homebrew/cask/docker"
+  "docker-desktop"
   "iterm2"
   "android-studio"
   "ghostty"
