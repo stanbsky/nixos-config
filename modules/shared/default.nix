@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, claude-code-nix, ... }:
 
 let
   emacsOverlaySha256 = "11p1c1l04zrn8dd5w8zyzlv172z05dwi9avbckav4d5fk043m754";
@@ -19,7 +19,12 @@ in
       map (n: import (path + ("/" + n)))
           (filter (n: match ".*\\.nix" n != null ||
                       pathExists (path + ("/" + n + "/default.nix")))
-                  (attrNames (readDir path)));
+                  (attrNames (readDir path)))
+      ++ [
+        (final: prev: {
+          claude-code = claude-code-nix.packages.${final.stdenv.hostPlatform.system}.claude-code;
+        })
+      ];
 
       # Emacs overlay commented out to avoid long build times
       # ++ [(import (builtins.fetchTarball {

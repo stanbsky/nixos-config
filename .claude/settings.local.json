@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(cat:*)",
-      "WebFetch(domain:app.cachix.org)"
+      "WebFetch(domain:app.cachix.org)",
+      "Bash(nix flake metadata:*)"
     ],
     "deny": [],
     "ask": []
