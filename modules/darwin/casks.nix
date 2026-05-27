@@ -9,6 +9,7 @@ _:
   "ghostty"
   "mongodb-compass"
   "gcloud-cli"
+  "metalbear-co/mirrord/mirrord"
 
   # Productivity Tools
   "raycast"
