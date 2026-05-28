@@ -26,5 +26,6 @@ _:
   # "neovim"
   "pinentry-mac"
   "telepresenceio/telepresence/telepresence-oss"
+  "metalbear-co/mirrord/mirrord"
   "aws-sso-cli"
 ]

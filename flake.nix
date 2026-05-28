@@ -35,9 +35,13 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    homebrew-mirrord = {
+      url = "github:metalbear-co/homebrew-mirrord";
+      flake = false;
+    };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-telepresence, home-manager, nixpkgs, disko, claude-code-nix } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-telepresence, home-manager, nixpkgs, disko, claude-code-nix, homebrew-mirrord } @inputs:
     let
       user = "stanborzhemsky";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -102,6 +106,7 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "telepresenceio/homebrew-telepresence" = homebrew-telepresence;
+                  "metalbear-co/homebrew-mirrord" = homebrew-mirrord;
                 };
                 mutableTaps = false;
                 autoMigrate = true;

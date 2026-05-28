@@ -163,6 +163,22 @@
         "type": "github"
       }
     },
+    "homebrew-mirrord": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779480242,
+        "narHash": "sha256-EF5VK06TMK2litC8fAiTBHhCthAu4eorN2cNVhkAPXM=",
+        "owner": "metalbear-co",
+        "repo": "homebrew-mirrord",
+        "rev": "6fc731ea159a5b0fa2c79ed5ac0bb827036fa390",
+        "type": "github"
+      },
+      "original": {
+        "owner": "metalbear-co",
+        "repo": "homebrew-mirrord",
+        "type": "github"
+      }
+    },
     "homebrew-telepresence": {
       "flake": false,
       "locked": {
@@ -238,6 +254,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-mirrord": "homebrew-mirrord",
         "homebrew-telepresence": "homebrew-telepresence",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2"
