@@ -36,4 +36,5 @@ _:
   # Entertainment Tools - Examples (uncomment as needed)
   # "spotify"
   "vlc"
+  "cmux"
 ]

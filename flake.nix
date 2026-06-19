@@ -39,9 +39,13 @@
       url = "github:metalbear-co/homebrew-mirrord";
       flake = false;
     };
+    homebrew-cmux = {
+      url = "github:manaflow-ai/homebrew-cmux";
+      flake = false;
+    };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-telepresence, home-manager, nixpkgs, disko, claude-code-nix, homebrew-mirrord } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-telepresence, home-manager, nixpkgs, disko, claude-code-nix, homebrew-mirrord, homebrew-cmux } @inputs:
     let
       user = "stanborzhemsky";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -107,6 +111,7 @@
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "telepresenceio/homebrew-telepresence" = homebrew-telepresence;
                   "metalbear-co/homebrew-mirrord" = homebrew-mirrord;
+                  "manaflow-ai/homebrew-cmux" = homebrew-cmux;
                 };
                 mutableTaps = false;
                 autoMigrate = true;

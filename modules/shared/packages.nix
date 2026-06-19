@@ -31,7 +31,7 @@ with pkgs; [
   terraform
 
   # Media-related packages
-  emacs-all-the-icons-fonts
+  # emacs-all-the-icons-fonts  # disabled — pulls in emacs build
   dejavu_fonts
   fd
   font-awesome
